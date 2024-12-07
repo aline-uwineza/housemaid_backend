@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM maven:3.8.6-eclipse-temurin-17 AS build
+FROM maven:3.8.6-eclipse-temurin-21 AS build  # Use JDK 21 for the build
 WORKDIR /app
 
 # Copy the source code to the container
@@ -9,7 +9,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the runtime container
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine  # Use JDK 21 for the runtime as well
 WORKDIR /app
 
 # Copy the built JAR from the build stage to the runtime stage
