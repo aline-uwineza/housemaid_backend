@@ -1,8 +1,8 @@
 FROM maven:3.9.8-eclipse-temurin-21 AS build
 
-COPY ..
+COPY src /app/src
 
-COPY pom.xml 
+COPY pom.xml /app
 
 WORKDIR /app
 RUN mvn clean install -U
